@@ -1,0 +1,50 @@
+#服务器配置
+server:
+  port: 80
+
+#mybatis配置
+mybatis:
+  mapper-locations: "static/mappers/*.xml"
+    #configuration:
+  #log-impl:"org.apache.ibatis.logging.stdout.StdOutImpl"
+  type-aliases-package: "com.huibo.po"
+
+#分页拦截器
+#pagehelper:
+#  helper-dialect: mysql
+#  page-size-zero: true
+#  reasonable: true
+
+#spring配置
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  #数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/login?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: tra
+    password: 123321
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    #Alibaba连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+  #servlet配置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 20MB

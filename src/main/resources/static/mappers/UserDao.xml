@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huibo.dao.UserDao">
+    <select id="getUser" resultType="com.huibo.po.UserPo">
+        select
+            USER_ID userId,
+            USER_NAME userName,
+            PASSWORD password,
+            AUTHORITY_ID authorityId
+            from
+                USER
+            <where>
+                <if test="userName!=null and userName !=''">
+                    USER_NAME = #{userName}
+                </if>
+            </where>
+    </select>
+</mapper>
